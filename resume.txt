@@ -1,0 +1,56 @@
+Aditya Raj Singh 
+Delhi, India | 8130325177 | thedebugkid@gmail.com 
+LinkedIn: https://www.linkedin.com/in/the-debug-kid/ | GitHub: https://github.com/Aditya-Raj-Parashar 
+Electronics, Programming, and Robotics Enthusiast 
+Career Summary 
+Passionate and hands-on Electronics and IT enthusiast with a strong foundation in IoT 
+systems, robotics, and AI development. Known for quick problem-solving, fast 
+debugging, and effective integration of tools and components. A fast learner with solid 
+experience working with hardware platforms, sensors, and microcontrollers. Eager to 
+contribute to dynamic teams and build smart, scalable solutions that bridge the physical 
+and digital worlds. 
+Education 
+• Class 12th – PCM + Electronics Technology (Vocational) - 
+GBSSS Tajpur Pahari, Delhi | 2025 | 81% 
+• Professional Certification Program in AI and Data Science (Pursuing) - 
+Drishti CPS – IIT Indore | Ongoing 
+• Basic Computer Course - 
+Sakar Outreach Foundation 
+• Microsoft SQL Certification Training 
+Academic Achievements 
+• Zonal level participant in Mental Math Competition 
+• Contributed to the development and management of the school’s electronics lab 
+Technical Skills 
+Programming Languages: Python (strong), C, C++, C# (ready to switch), SQL (hands-on) 
+Hardware: Arduino Nano, ESP32, sensor/module integration 
+Software & Tools: VS Code, Cursor.ai, Logically, Circuit Simulator 
+Others: Linux (basic), AI frameworks (PyTorch/TensorFlow – basic familiarity) 
+Experience 
+Available for internships and collaborative opportunities 
+Projects - - - 
+Circuit Breaker System (Electronics) 
+Designed a circuit breaker with fault detection using relay and LED indicators. Relay 
+disconnects power output during short circuits, with a red LED signal. A reset switch 
+restores the original connection. 
+BlogSphere – Blogging Website 
+Tech Stack: Python, Flask, Microsoft SQL, HTML/CSS, Bootstrap 
+Developed a responsive blogging platform where users can register, create posts, 
+comment, and perform tag-based searches. Built responsive UI with Bootstrap and 
+used Microsoft SQL for secure backend data handling. 
+BarsOS – Offline Multimodal AI Assistant (In Progress) 
+Tech Stack: Python, Flask, LLaMA.cpp, CUDA, Whisper, TTS 
+Creating an offline AI assistant featuring natural chat, voice input/output, memory, 
+and modular code execution. Integrated GPU-accelerated LLM via LLaMA.cpp and 
+designed a web UI with Flask + Monaco Editor. 
+Workshops & Trainings 
+• Participated in school electronics workshops focused on sensors, microcontrollers. 
+• Learned practical electronics assembly and troubleshooting through guided school 
+sessions 
+Languages 
+• English – Fluent 
+• Hindi – Native 
+• Japanese – Basic conversational skills 
+Interests 
+• Artificial Intelligence 
+• Robotics and Automation 
+• Macro Electronics and Hardware Design 
