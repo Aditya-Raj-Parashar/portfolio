@@ -1,0 +1,420 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --primary: #00f0ff;
+    --secondary: #ff00f0;
+    --dark: #0a0a1a;
+    --light: #f0f0ff;
+}
+
+/* Light theme variables */
+[data-theme="light"] {
+    --primary: #0066cc;
+    --secondary: #cc0066;
+    --dark: #ffffff;
+    --light: #1a1a1a;
+}
+
+/* Loading Screen */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.loader-content {
+    text-align: center;
+    color: var(--light);
+}
+
+.loader-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(0, 240, 255, 0.3);
+    border-top: 4px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: var(--primary);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark);
+    font-size: 20px;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--primary);
+}
+
+/* Scroll Progress */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    z-index: 1001;
+    transition: width 0.1s ease;
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 120px; /* Adjusted to account for fixed footer */
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark);
+    font-size: 20px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.scroll-to-top:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--primary);
+}
+
+.scroll-to-top.visible {
+    display: flex;
+}
+
+/* Project Filters */
+.project-filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--primary);
+    color: var(--dark);
+}
+
+/* Project Modal */
+.project-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.project-modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--dark);
+    border: 1px solid var(--primary);
+    border-radius: 15px;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: var(--light);
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Skill Descriptions */
+.skill-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-item:hover .skill-description {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.skill-description {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--dark);
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 10;
+    border: 1px solid var(--primary);
+    min-width: 200px;
+}
+
+/* Floating Shapes */
+.floating-shape {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: var(--primary);
+    opacity: 0.3;
+    animation: float-shape 10s infinite linear;
+    z-index: -1;
+}
+
+.floating-shape.triangle {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.floating-shape.square {
+    border-radius: 0;
+}
+
+.floating-shape.circle {
+    border-radius: 50%;
+}
+
+.floating-shape.hexagon {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+@keyframes float-shape {
+    0% { transform: translateY(100vh) rotate(0deg); }
+    100% { transform: translateY(-100px) rotate(360deg); }
+}
+
+/* Notifications */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 5px;
+    color: white;
+    z-index: 2001;
+    animation: slideIn 0.3s ease;
+}
+
+.notification-success {
+    background: #10b981;
+}
+
+.notification-error {
+    background: #ef4444;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+/* Mouse Trail Effect */
+.mouse-trail {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: var(--primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.7;
+    animation: fadeOut 1s ease forwards;
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; transform: scale(0.5); }
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Fixed Header and Footer Adjustments */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px; /* Account for fixed header */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--dark);
+    color: var(--light);
+    overflow-x: hidden;
+    position: relative;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    padding-bottom: 200px; /* Account for fixed footer */
+}
+
+/* Ensure sections have proper spacing */
+section {
+    scroll-margin-top: 100px; /* Account for fixed header */
+}
+
+/* Mobile menu adjustments for fixed header */
+@media (max-width: 768px) {
+    .mobile-menu {
+        top: 80px !important;
+        height: calc(100vh - 80px) !important;
+    }
+}
+
+h1, h2, h3, h4, .orbitron {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.glow {
+    text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+}
+
+.card-glow {
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+}
+
+.border-glow {
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    box-shadow: inset 0 0 10px rgba(0, 240, 255, 0.3), 0 0 10px rgba(0, 240, 255, 0.3);
+}
+
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.threejs-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+}
+
+.skill-bar {
+    height: 10px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 5px;
+    transition: width 1.5s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    transition: transform 0.3s ease;
+}
+
+.hexagon {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+.floating {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu.active {
+    transform: translateX(0);
+}
+
+/* Focus styles for accessibility */
+a:focus, button:focus, input:focus, textarea:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Reduced motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    .floating {
+        animation: none;
+    }
+    .skill-bar {
+        transition: none;
+    }
+    .project-card:hover {
+        transform: none;
+    }
+} 

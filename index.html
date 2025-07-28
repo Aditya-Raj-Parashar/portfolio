@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- First of all it has taken a lot of efforts so pleare read the code and dont judge me -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PyNebula - Futuristic Python Developer specializing in AI, Machine Learning, and Backend Development. Crafting elegant solutions with cutting-edge technologies.">
+    <meta name="keywords" content="Python Developer, AI, Machine Learning, Backend Development, Data Science">
+    <meta name="author" content="PyNebula">
+    <meta property="og:title" content="PyNebula | Futuristic Python Developer">
+    <meta property="og:description" content="Crafting elegant solutions with Python and cutting-edge technologies">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <title>PyNebula | Futuristic Python Developer</title>
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen">
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <p>Loading PyNebula...</p>
+        </div>
+    </div>
+    
+    <!-- 3D Background -->
+    <div id="threejs-container" class="threejs-container"></div>
+    
+    <!-- Particles -->
+    <div id="particles-js"></div>
+    
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 relative z-10 pt-20 pb-32">
+        <!-- Navigation -->
+        <nav class="fixed top-0 left-0 right-0 py-6 px-4 bg-gray-900 bg-opacity-90 backdrop-blur-sm z-50 flex justify-between items-center">
+            <div class="text-2xl font-bold gradient-text orbitron">PyNebula</div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-white hover:text-cyan-300 transition" aria-label="Go to home section">Home</a>
+                <a href="#about" class="text-white hover:text-cyan-300 transition" aria-label="Go to about section">About</a>
+                <a href="#education" class="text-white hover:text-cyan-300 transition" aria-label="Go to education section">Education</a>
+                <a href="#skills" class="text-white hover:text-cyan-300 transition" aria-label="Go to skills section">Skills</a>
+                <a href="#workshops" class="text-white hover:text-cyan-300 transition" aria-label="Go to workshops section">Workshops</a>
+                <a href="#interests" class="text-white hover:text-cyan-300 transition" aria-label="Go to interests section">Interests</a>
+                <a href="#projects" class="text-white hover:text-cyan-300 transition" aria-label="Go to projects section">Projects</a>
+                <a href="#contact" class="text-white hover:text-cyan-300 transition" aria-label="Go to contact section">Contact</a>
+            </div>
+            <button class="md:hidden text-white" id="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </nav>
+        
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light theme">
+            <i class="fas fa-moon"></i>
+        </button>
+        
+        <!-- Scroll Progress Bar -->
+        <div class="scroll-progress" id="scroll-progress"></div>
+        
+        <!-- Scroll to Top Button -->
+        <button class="scroll-to-top" id="scroll-to-top" aria-label="Scroll to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu fixed top-0 left-0 w-64 h-full bg-gray-900 bg-opacity-95 z-50 md:hidden" style="top: 80px;">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-8">
+                    <div class="text-xl font-bold gradient-text orbitron">PyNebula</div>
+                    <button id="close-menu" class="text-white" aria-label="Close mobile menu">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+                <div class="space-y-4">
+                    <a href="#home" class="block text-white hover:text-cyan-300 transition py-2">Home</a>
+                    <a href="#about" class="block text-white hover:text-cyan-300 transition py-2">About</a>
+                    <a href="#education" class="block text-white hover:text-cyan-300 transition py-2">Education</a>
+                    <a href="#skills" class="block text-white hover:text-cyan-300 transition py-2">Skills</a>
+                    <a href="#workshops" class="block text-white hover:text-cyan-300 transition py-2">Workshops</a>
+                    <a href="#interests" class="block text-white hover:text-cyan-300 transition py-2">Interests</a>
+                    <a href="#projects" class="block text-white hover:text-cyan-300 transition py-2">Projects</a>
+                    <a href="#contact" class="block text-white hover:text-cyan-300 transition py-2">Contact</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center pt-32">
+            <div class="w-full md:w-1/2">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 orbitron">
+                    <span class="gradient-text glow">Hello, I'm</span>
+                    <span class="block text-white">Aditya Raj Singh</span>
+                </h1>
+                <div class="text-3xl md:text-4xl mb-10">
+                    <span id="typed" class="gradient-text" aria-live="polite"></span>
+                </div>
+                <p class="text-gray-300 mb-10 text-xl md:text-2xl leading-relaxed">
+                    Electronics, Programming, and Robotics Enthusiast. 
+                    Passionate about IoT systems, robotics, and AI development with hands-on experience in hardware platforms and microcontrollers.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#contact" class="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full font-bold text-lg hover:opacity-90 transition" aria-label="Contact me">
+                        Contact Me
+                    </a>
+                    <a href="#projects" class="px-8 py-4 border-2 border-cyan-400 text-cyan-400 rounded-full font-bold text-lg hover:bg-cyan-400 hover:bg-opacity-10 transition" aria-label="View my projects">
+                        View Work
+                    </a>
+                </div>
+            </div>
+            <div class="hidden md:block md:w-1/2 relative">
+                <div class="absolute right-0 w-96 h-96 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-full opacity-20 blur-3xl"></div>
+                <div class="relative floating">
+                    <div class="hexagon w-80 h-80 bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center">
+                        <div class="hexagon w-72 h-72 bg-gray-900 flex items-center justify-center">
+                            <i class="fab fa-python text-8xl gradient-text" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Section -->
+        <section id="about" class="py-32">
+            <h2 class="text-3xl md:text-5xl font-bold mb-20 text-center orbitron">
+                <span class="gradient-text">About</span> <span class="text-white">Me</span>
+            </h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="w-full md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                    <div class="relative">
+                        <div class="w-64 h-64 bg-gradient-to-br from-cyan-500 to-purple-500 rounded-full opacity-20 blur-2xl absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+                        <div class="w-64 h-64 bg-gray-800 rounded-full overflow-hidden border-glow">
+                            <img src="profile-pic.png" alt="Developer portrait" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/3 md:pl-12">
+                    <h3 class="text-3xl font-bold mb-6 orbitron">Electronics & AI Enthusiast</h3>
+                    <p class="text-gray-300 mb-8 text-lg leading-relaxed">
+                        Passionate and hands-on Electronics and IT enthusiast with a strong foundation in IoT systems, 
+                        robotics, and AI development. Known for quick problem-solving, fast debugging, and effective 
+                        integration of tools and components. A fast learner with solid experience working with hardware 
+                        platforms, sensors, and microcontrollers. Eager to contribute to dynamic teams and build smart, 
+                        scalable solutions that bridge the physical and digital worlds.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-gray-800 bg-opacity-50 p-8 rounded-xl border-glow">
+                            <div class="flex items-center mb-6">
+                                <div class="w-14 h-14 bg-cyan-500 bg-opacity-20 rounded-full flex items-center justify-center mr-5">
+                                    <i class="fas fa-microchip text-2xl text-cyan-400" aria-hidden="true"></i>
+                                </div>
+                                <h4 class="text-2xl font-bold orbitron">Hardware & IoT</h4>
+                            </div>
+                            <p class="text-gray-300 text-lg">
+                                Experienced with Arduino Nano, ESP32, and sensor/module integration for smart IoT solutions.
+                            </p>
+                        </div>
+                        <div class="bg-gray-800 bg-opacity-50 p-8 rounded-xl border-glow">
+                            <div class="flex items-center mb-6">
+                                <div class="w-14 h-14 bg-purple-500 bg-opacity-20 rounded-full flex items-center justify-center mr-5">
+                                    <i class="fas fa-brain text-2xl text-purple-400" aria-hidden="true"></i>
+                                </div>
+                                <h4 class="text-2xl font-bold orbitron">AI & Robotics</h4>
+                            </div>
+                            <p class="text-gray-300 text-lg">
+                                Developing offline AI assistants and robotics solutions with hands-on experience in AI frameworks.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Education Section -->
+        <section id="education" class="py-32">
+            <h2 class="text-3xl md:text-5xl font-bold mb-20 text-center orbitron">
+                <span class="gradient-text">Education</span> <span class="text-white">& Training</span>
+            </h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Current Education -->
+                    <div class="bg-gray-900 bg-opacity-70 p-8 rounded-xl border-glow">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-cyan-500 bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-graduation-cap text-cyan-400" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="text-xl font-bold orbitron">Current Education</h3>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="border-l-4 border-cyan-500 pl-6">
+                                <h4 class="font-bold text-white text-xl">Class 12th – PCM + Electronics Technology</h4>
+                                <p class="text-gray-400 text-lg">GBSSS Tajpur Pahari, Delhi</p>
+                                <p class="text-cyan-400 text-lg">2025 | 81%</p>
+                            </div>
+                            <div class="border-l-4 border-purple-500 pl-6">
+                                <h4 class="font-bold text-white text-xl">Professional Certification Program in AI and Data Science</h4>
+                                <p class="text-gray-400 text-lg">Drishti CPS – IIT Indore</p>
+                                <p class="text-purple-400 text-lg">Ongoing</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Certifications -->
+                    <div class="bg-gray-900 bg-opacity-70 p-8 rounded-xl border-glow">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-green-500 bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-certificate text-green-400" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="text-xl font-bold orbitron">Certifications</h3>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="border-l-4 border-green-500 pl-6">
+                                <h4 class="font-bold text-white text-xl">Microsoft SQL Certification Training</h4>
+                                <p class="text-gray-400 text-lg">Database Management</p>
+                                <a href="https://lms.intellipaat.com/certificate-link/?Yz0yODUzJnU9MzIxMTY1JmV4dD0x" target="_blank" class="text-green-400 hover:text-green-300 text-lg flex items-center">
+                                    <i class="fas fa-external-link-alt mr-2"></i>View Certificate
+                                </a>
+                            </div>
+                            <div class="border-l-4 border-blue-500 pl-6">
+                                <h4 class="font-bold text-white text-xl">Basic Computer Course</h4>
+                                <p class="text-gray-400 text-lg">Sakar Outreach Foundation</p>
+                            </div>
+                            <div class="border-l-4 border-orange-500 pl-6">
+                                <h4 class="font-bold text-white text-xl">Tata Certification</h4>
+                                <p class="text-gray-400 text-lg">Professional Development</p>
+                                <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/ifobHAoMjQs9s6bKS/gMTdCXwDdLYoXZ3wG_ifobHAoMjQs9s6bKS_cue5rHZGkiZiRNAo6_1753258532471_completion_certificate.pdf" target="_blank" class="text-orange-400 hover:text-orange-300 text-lg flex items-center">
+                                    <i class="fas fa-external-link-alt mr-2"></i>View Certificate
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Academic Achievements -->
+                <div class="mt-12 bg-gray-900 bg-opacity-70 p-8 rounded-xl border-glow">
+                    <h3 class="text-3xl font-bold mb-8 orbitron text-center">Academic Achievements</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-yellow-500 bg-opacity-20 rounded-full flex items-center justify-center mr-5">
+                                <i class="fas fa-trophy text-yellow-400" aria-hidden="true"></i>
+                            </div>
+                            <span class="text-gray-300 text-lg">Zonal level participant in Mental Math Competition</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-blue-500 bg-opacity-20 rounded-full flex items-center justify-center mr-5">
+                                <i class="fas fa-microchip text-blue-400" aria-hidden="true"></i>
+                            </div>
+                            <span class="text-gray-300 text-lg">Contributed to school's electronics lab development and management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section id="skills" class="py-32">
+            <h2 class="text-3xl md:text-5xl font-bold mb-20 text-center orbitron">
+                <span class="gradient-text">Technical</span> <span class="text-white">Skills</span>
+            </h2>
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Skills Column -->
+                    <div class="bg-gray-900 bg-opacity-70 p-8 rounded-xl border-glow">
+                        <h3 class="text-2xl font-bold mb-8 orbitron text-center">Skills</h3>
+                        <div class="space-y-8">
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-3">
+                                    <span class="font-medium text-lg">Python</span>
+                                    <span class="text-lg">90%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-3">
+                                    <div class="skill-bar rounded-full h-3" style="width: 90%" aria-label="Python skill level: 90%"></div>
+                                </div>
+                                <div class="skill-description">
+                                    <strong>Strong Level</strong><br>
+                                    Primary programming language with experience in Flask, AI frameworks, and hardware integration.
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-3">
+                                    <span class="font-medium text-lg">C/C++</span>
+                                    <span class="text-lg">85%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-3">
+                                    <div class="skill-bar rounded-full h-3" style="width: 85%" aria-label="C/C++ skill level: 85%"></div>
+                                </div>
+                                <div class="skill-description">
+                                    <strong>Advanced Level</strong><br>
+                                    Microcontroller programming, embedded systems, and hardware control applications.
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-3">
+                                    <span class="font-medium text-lg">Hardware/IoT</span>
+                                    <span class="text-lg">80%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-3">
+                                    <div class="skill-bar rounded-full h-3" style="width: 80%" aria-label="Hardware/IoT skill level: 80%"></div>
+                                </div>
+                                <div class="skill-description">
+                                    <strong>Advanced Level</strong><br>
+                                    Arduino Nano, ESP32, sensor integration, and circuit design with practical electronics experience.
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-3">
+                                    <span class="font-medium text-lg">AI/ML</span>
+                                    <span class="text-lg">75%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-3">
+                                    <div class="skill-bar rounded-full h-3" style="width: 75%" aria-label="AI/ML skill level: 75%"></div>
+                                </div>
+                                <div class="skill-description">
+                                    <strong>Intermediate Level</strong><br>
+                                    Basic familiarity with PyTorch/TensorFlow, developing offline AI assistants and robotics solutions.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Software Column -->
+                    <div class="bg-gray-900 bg-opacity-70 p-8 rounded-xl border-glow">
+                        <h3 class="text-2xl font-bold mb-8 orbitron text-center">Software</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center p-4 bg-gray-800 rounded-lg">
+                                <i class="fas fa-code text-3xl text-blue-400 mr-4" aria-hidden="true"></i>
+                                <span class="text-lg">VS Code</span>
+                            </div>
+                            <div class="flex items-center p-4 bg-gray-800 rounded-lg">
+                                <i class="fas fa-robot text-3xl text-purple-400 mr-4" aria-hidden="true"></i>
+                                <span class="text-lg">Cursor.ai</span>
+                            </div>
+                            <div class="flex items-center p-4 bg-gray-800 rounded-lg">
+                                <i class="fas fa-lightbulb text-3xl text-yellow-400 mr-4" aria-hidden="true"></i>
+                                <span class="text-lg">Logically</span>
+                            </div>
+                            <div class="flex items-center p-4 bg-gray-800 rounded-lg">
+                                <i class="fas fa-project-diagram text-3xl text-green-400 mr-4" aria-hidden="true"></i>
+                                <span class="text-lg">Circuit Simulator</span>
+                            </div>
+                            <div class="flex items-center p-4 bg-gray-800 rounded-lg">
+                                <i class="fab fa-linux text-3xl text-orange-400 mr-4" aria-hidden="true"></i>
+                                <span class="text-lg">Linux</span>
+                            </div>
+                            <div class="flex items-center p-4 bg-gray-800 rounded-lg">
+                                <i class="fab fa-git-alt text-3xl text-red-400 mr-4" aria-hidden="true"></i>
+                                <span class="text-lg">Git</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Technology Column -->
+                    <div class="bg-gray-900 bg-opacity-70 p-8 rounded-xl border-glow lg:col-span-1">
+                        <h3 class="text-2xl font-bold mb-8 orbitron text-center">Technology</h3>
+                        <div class="grid grid-cols-1 gap-6">
+                            <div class="flex items-center p-4 bg-gray-800 rounded-lg">
+                                <i class="fab fa-python text-3xl text-blue-400 mr-4" aria-hidden="true"></i>
+                                <span class="text-lg">Python</span>
+                            </div>
+                            <div class="flex items-center p-4 bg-gray-800 rounded-lg">
+                                <i class="fas fa-microchip text-3xl text-green-400 mr-4" aria-hidden="true"></i>
+                                <span class="text-lg">Arduino</span>
+                            </div>
+                            <div class="flex items-center p-4 bg-gray-800 rounded-lg">
+                                <i class="fas fa-wifi text-3xl text-orange-400 mr-4" aria-hidden="true"></i>
+                                <span class="text-lg">ESP32</span>
+                            </div>
+                            <div class="flex items-center p-4 bg-gray-800 rounded-lg">
+                                <i class="fas fa-robot text-3xl text-purple-400 mr-4" aria-hidden="true"></i>
+                                <span class="text-lg">LLaMA.cpp</span>
+                            </div>
+                            <div class="flex items-center p-4 bg-gray-800 rounded-lg">
+                                <i class="fas fa-database text-3xl text-cyan-300 mr-4" aria-hidden="true"></i>
+                                <span class="text-lg">SQL</span>
+                            </div>
+                            <div class="flex items-center p-4 bg-gray-800 rounded-lg">
+                                <i class="fas fa-code text-3xl text-indigo-400 mr-4" aria-hidden="true"></i>
+                                <span class="text-lg">C/C++</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Workshops & Languages Section -->
+        <section id="workshops" class="py-32">
+            <h2 class="text-3xl md:text-5xl font-bold mb-20 text-center orbitron">
+                <span class="gradient-text">Workshops</span> <span class="text-white">& Languages</span>
+            </h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Workshops -->
+                    <div class="bg-gray-900 bg-opacity-70 p-8 rounded-xl border-glow">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-orange-500 bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-tools text-orange-400" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="text-xl font-bold orbitron">Workshops & Trainings</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="w-2 h-2 bg-orange-400 rounded-full mt-2 mr-3"></div>
+                                <div>
+                                    <h4 class="font-medium text-white">School Electronics Workshops</h4>
+                                    <p class="text-gray-400 text-sm">Focused on sensors, microcontrollers, and practical electronics assembly</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-2 h-2 bg-orange-400 rounded-full mt-2 mr-3"></div>
+                                <div>
+                                    <h4 class="font-medium text-white">Practical Electronics Training</h4>
+                                    <p class="text-gray-400 text-sm">Guided school sessions on electronics assembly and troubleshooting</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Languages -->
+                    <div class="bg-gray-900 bg-opacity-70 p-8 rounded-xl border-glow">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-green-500 bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-language text-green-400" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="text-xl font-bold orbitron">Languages</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-white">English</span>
+                                <span class="text-green-400 font-medium">Fluent</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="bg-green-400 rounded-full h-2" style="width: 95%"></div>
+                            </div>
+                            
+                            <div class="flex justify-between items-center">
+                                <span class="text-white">Hindi</span>
+                                <span class="text-blue-400 font-medium">Native</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="bg-blue-400 rounded-full h-2" style="width: 100%"></div>
+                            </div>
+                            
+                            <div class="flex justify-between items-center">
+                                <span class="text-white">Japanese</span>
+                                <span class="text-purple-400 font-medium">Basic Conversational</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="bg-purple-400 rounded-full h-2" style="width: 30%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Interests Section -->
+        <section id="interests" class="py-32">
+            <h2 class="text-3xl md:text-5xl font-bold mb-20 text-center orbitron">
+                <span class="gradient-text">Interests</span> <span class="text-white">& Focus Areas</span>
+            </h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-gray-900 bg-opacity-70 p-8 rounded-xl border-glow text-center hover:card-glow transition duration-300">
+                        <div class="w-16 h-16 bg-cyan-500 bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-brain text-3xl text-cyan-400" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-xl font-bold orbitron mb-4">Artificial Intelligence</h3>
+                        <p class="text-gray-300">
+                            Passionate about developing AI solutions, machine learning models, and intelligent systems that can solve real-world problems.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-gray-900 bg-opacity-70 p-8 rounded-xl border-glow text-center hover:card-glow transition duration-300">
+                        <div class="w-16 h-16 bg-purple-500 bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-robot text-3xl text-purple-400" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-xl font-bold orbitron mb-4">Robotics & Automation</h3>
+                        <p class="text-gray-300">
+                            Interested in building autonomous systems, robotic solutions, and automation technologies for industrial and personal applications.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-gray-900 bg-opacity-70 p-8 rounded-xl border-glow text-center hover:card-glow transition duration-300">
+                        <div class="w-16 h-16 bg-green-500 bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-microchip text-3xl text-green-400" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-xl font-bold orbitron mb-4">Macro Electronics & Hardware Design</h3>
+                        <p class="text-gray-300">
+                            Focused on designing and building electronic circuits, hardware systems, and IoT devices with practical applications.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Availability Status -->
+                <div class="mt-12 bg-gradient-to-r from-cyan-500 to-purple-500 p-8 rounded-xl text-center">
+                    <h3 class="text-2xl font-bold orbitron mb-4">Available for Opportunities</h3>
+                    <p class="text-white mb-6">
+                        Currently seeking internships and collaborative opportunities in electronics, programming, and AI development.
+                    </p>
+                    <a href="#contact" class="px-6 py-3 bg-white text-gray-900 rounded-full font-bold hover:bg-gray-100 transition">
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Projects Section -->
+        <section id="projects" class="py-32">
+            <h2 class="text-3xl md:text-5xl font-bold mb-20 text-center orbitron">
+                <span class="gradient-text">Featured</span> <span class="text-white">Projects</span>
+            </h2>
+            
+            <!-- Project Filters -->
+            <div class="project-filters mb-8">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="python">Python</button>
+                <button class="filter-btn" data-filter="hardware">Hardware</button>
+                <button class="filter-btn" data-filter="ai">AI/ML</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="electronics">Electronics</button>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card bg-gray-900 bg-opacity-70 rounded-xl overflow-hidden border-glow transition duration-500 hover:card-glow" data-category="hardware electronics">
+                    <div class="h-48 bg-gradient-to-br from-cyan-500 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-bolt text-6xl text-white" aria-hidden="true"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 orbitron">Circuit Breaker System</h3>
+                        <div class="flex items-center mb-2">
+                            <span class="px-2 py-1 bg-green-900 bg-opacity-30 text-green-300 rounded-full text-xs">Completed</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            Designed a circuit breaker with fault detection using relay and LED indicators for safety automation.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-cyan-900 bg-opacity-30 text-cyan-300 rounded-full text-sm">Electronics</span>
+                            <span class="px-3 py-1 bg-purple-900 bg-opacity-30 text-purple-300 rounded-full text-sm">Relay</span>
+                            <span class="px-3 py-1 bg-blue-900 bg-opacity-30 text-blue-300 rounded-full text-sm">LED</span>
+                        </div>
+                        <button class="text-cyan-400 hover:text-cyan-300 font-medium flex items-center project-view-btn" data-project="circuit-breaker" aria-label="View Circuit Breaker System project details">
+                            View Project <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-gray-900 bg-opacity-70 rounded-xl overflow-hidden border-glow transition duration-500 hover:card-glow" data-category="python web">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-blue-600 flex items-center justify-center">
+                        <i class="fas fa-blog text-6xl text-white" aria-hidden="true"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 orbitron">BlogSphere</h3>
+                        <div class="flex items-center mb-2">
+                            <span class="px-2 py-1 bg-green-900 bg-opacity-30 text-green-300 rounded-full text-xs">Completed</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            Responsive blogging platform with user registration, posts, comments, and tag-based searches.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-green-900 bg-opacity-30 text-green-300 rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-yellow-900 bg-opacity-30 text-yellow-300 rounded-full text-sm">Flask</span>
+                            <span class="px-3 py-1 bg-red-900 bg-opacity-30 text-red-300 rounded-full text-sm">SQL</span>
+                        </div>
+                        <button class="text-cyan-400 hover:text-cyan-300 font-medium flex items-center project-view-btn" data-project="blogsphere" aria-label="View BlogSphere project details">
+                            View Project <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-gray-900 bg-opacity-70 rounded-xl overflow-hidden border-glow transition duration-500 hover:card-glow" data-category="python ai">
+                    <div class="h-48 bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
+                        <i class="fas fa-robot text-6xl text-white" aria-hidden="true"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 orbitron">BarsOS</h3>
+                        <div class="flex items-center mb-2">
+                            <span class="px-2 py-1 bg-yellow-900 bg-opacity-30 text-yellow-300 rounded-full text-xs">In Progress</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            Offline multimodal AI assistant with natural chat, voice I/O, memory, and modular code execution.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-900 bg-opacity-30 text-blue-300 rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-indigo-900 bg-opacity-30 text-indigo-300 rounded-full text-sm">LLaMA.cpp</span>
+                            <span class="px-3 py-1 bg-pink-900 bg-opacity-30 text-pink-300 rounded-full text-sm">CUDA</span>
+                        </div>
+                        <button class="text-cyan-400 hover:text-cyan-300 font-medium flex items-center project-view-btn" data-project="barsos" aria-label="View BarsOS project details">
+                            View Project <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="px-6 py-3 border border-cyan-400 text-cyan-400 rounded-full font-bold hover:bg-cyan-400 hover:bg-opacity-10 transition inline-flex items-center" aria-label="View all projects">
+                    View All Projects <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
+                </a>
+            </div>
+        </section>
+        
+        <!-- Project Modal -->
+        <div class="project-modal" id="project-modal">
+            <div class="modal-content p-8">
+                <button class="modal-close" id="modal-close" aria-label="Close project modal">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div id="modal-content">
+                    <!-- Modal content will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="py-32">
+            <h2 class="text-3xl md:text-5xl font-bold mb-20 text-center orbitron">
+                <span class="gradient-text">Get In</span> <span class="text-white">Touch</span>
+            </h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gray-900 bg-opacity-70 rounded-xl p-8 md:p-12 border-glow">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-6 orbitron">Contact Information</h3>
+                            <p class="text-gray-300 mb-8">
+                                Have a project in mind or want to discuss potential opportunities? 
+                                Feel free to reach out through any of these channels.
+                            </p>
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 bg-cyan-500 bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-envelope text-cyan-400" aria-hidden="true"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-gray-400 text-sm">Email</div>
+                                        <div class="font-medium">thedebugkid@gmail.com</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 bg-purple-500 bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-phone-alt text-purple-400" aria-hidden="true"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-gray-400 text-sm">Phone</div>
+                                        <div class="font-medium">+91 8130325177</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 bg-blue-500 bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                        <i class="fas fa-map-marker-alt text-blue-400" aria-hidden="true"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-gray-400 text-sm">Location</div>
+                                        <div class="font-medium">Delhi, India</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex space-x-4 mt-8">
+                                <a href="https://github.com/Aditya-Raj-Parashar" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-cyan-500 transition" aria-label="GitHub profile">
+                                    <i class="fab fa-github text-lg" aria-hidden="true"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/the-debug-kid/" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-500 transition" aria-label="LinkedIn profile">
+                                    <i class="fab fa-linkedin-in text-lg" aria-hidden="true"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-purple-500 transition" aria-label="Twitter profile">
+                                    <i class="fab fa-twitter text-lg" aria-hidden="true"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-500 transition" aria-label="YouTube channel">
+                                    <i class="fab fa-youtube text-lg" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-6 orbitron">Send a Message</h3>
+                            <form id="contact-form">
+                                <div class="mb-6">
+                                    <label for="name" class="block text-gray-300 mb-2">Your Name</label>
+                                    <input type="text" id="name" name="name" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="Enter your name">
+                                </div>
+                                <div class="mb-6">
+                                    <label for="email" class="block text-gray-300 mb-2">Email Address</label>
+                                    <input type="email" id="email" name="email" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="Enter your email">
+                                </div>
+                                <div class="mb-6">
+                                    <label for="subject" class="block text-gray-300 mb-2">Subject</label>
+                                    <input type="text" id="subject" name="subject" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="What's this about?">
+                                </div>
+                                <div class="mb-6">
+                                    <label for="message" class="block text-gray-300 mb-2">Your Message</label>
+                                    <textarea id="message" name="message" rows="4" required class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="Tell me about your project..."></textarea>
+                                </div>
+                                <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transition">
+                                    <span class="submit-text">Send Message</span>
+                                    <span class="loading-text hidden">Sending...</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="fixed bottom-0 left-0 right-0 py-8 text-center bg-gray-900 bg-opacity-90 backdrop-blur-sm border-t border-gray-800 z-40">
+            <div class="text-3xl font-bold gradient-text mb-6 orbitron">PyNebula</div>
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="https://github.com/Aditya-Raj-Parashar" target="_blank" class="text-gray-400 hover:text-cyan-400 transition" aria-label="GitHub profile">
+                    <i class="fab fa-github text-xl" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/the-debug-kid/" target="_blank" class="text-gray-400 hover:text-blue-400 transition" aria-label="LinkedIn profile">
+                    <i class="fab fa-linkedin-in text-xl" aria-hidden="true"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-purple-400 transition" aria-label="Twitter profile">
+                    <i class="fab fa-twitter text-xl" aria-hidden="true"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-red-400 transition" aria-label="YouTube channel">
+                    <i class="fab fa-youtube text-xl" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="text-gray-500 text-sm">
+                &copy; <span id="current-year"></span> PyNebula. All rights reserved.
+            </div>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
