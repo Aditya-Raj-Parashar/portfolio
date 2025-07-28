@@ -282,6 +282,46 @@
     to { opacity: 0; transform: scale(0.5); }
 }
 
+/* Performance Optimizations */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Prevent layout shifts */
+.profile-image-container {
+    min-height: 384px; /* w-96 = 384px */
+    min-width: 384px;
+}
+
+/* Optimize background animations */
+.floating-shape {
+    will-change: transform;
+}
+
+/* Reduce motion for better performance */
+@media (prefers-reduced-motion: reduce) {
+    .floating-shape {
+        animation: none;
+    }
+    .skill-bar {
+        transition: none;
+    }
+    .project-card:hover {
+        transform: none;
+    }
+    .floating {
+        animation: none;
+    }
+}
+
+/* Optimize for low-end devices */
+@media (max-width: 768px) {
+    .floating-shape {
+        display: none;
+    }
+}
+
 /* Utility Classes */
 .hidden {
     display: none !important;

@@ -138,7 +138,7 @@ function initProjectModal() {
                 'Responsive design'
             ],
             technologies: ['Python', 'Flask', 'Microsoft SQL', 'HTML/CSS', 'Bootstrap'],
-            github: '#',
+            github: 'https://github.com/Aditya-Raj-Parashar/blogsphere-local',
             live: 'https://aditya-raj-parashar.github.io/blogsphere-local/',
             image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800'
         },
